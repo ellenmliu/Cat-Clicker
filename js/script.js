@@ -21,22 +21,27 @@ var cats = [
 $(document).ready(function(){
   cats.forEach(function(cat){
 
-    //$('.numofclicks').append('<h2 id="'+cat.name+'clicks">'+cat.name+': '+cat.clicks+'</h2>');
     $('.listofcats').append('<li id="show'+cat.name+'" class="catbutton">'+cat.name+'</li>')
-    //$('.container').append('<img id="'+cat.name+'" class="cat" src="'+cat.img+'"/>');
 
-    $('#'+cat.name).click(function(e) {
-      cat.clicks += 1;
-      $('#'+cat.name+'clicks').text(cat.name+': '+cat.clicks);
-    });
+    $('#show'+cat.name).click(function(e){
+      $('.numofclicks').html('<h2 id="'+cat.name+'clicks">'+cat.name+': '+cat.clicks+'</h2>');
+      $('.container').html('<img id="'+cat.name+'" class="cat" src="'+cat.img+'"/>');
 
-    $('#'+cat.name).mousedown(function(e) {
-      $('#'+cat.name).css({"width" : "+=5", "height":"+=5"})
-    });
+      $('#'+cat.name).click(function(e) {
+        cat.clicks += 1;
+        $('#'+cat.name+'clicks').text(cat.name+': '+cat.clicks);
+      });
 
-    $('#'+cat.name).mouseup(function(e) {
-      $('#'+cat.name).css({"width" : "-=5", "height":"-=5"})
-    });
+      $('#'+cat.name).mousedown(function(e) {
+        $('#'+cat.name).css({"width" : "+=5", "height":"+=5"})
+      });
+
+      $('#'+cat.name).mouseup(function(e) {
+        $('#'+cat.name).css({"width" : "-=5", "height":"-=5"})
+      });
+    })
+
+
   })
 
 })
