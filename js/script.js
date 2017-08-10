@@ -11,9 +11,13 @@ var cats = [
 
 $(document).ready(function(){
   cats.forEach(function(cat){
+
+    $('.numofclicks').append('<h2 id="'+cat.name+'clicks">'+cat.name+': '+cat.clicks+'</h2>');
     $('.container').append('<img id="'+cat.name+'" class="cat" src="'+cat.img+'"/>');
+
     $('#'+cat.name).click(function(e) {
-      cat.click += 1;
+      cat.clicks += 1;
+      $('#'+cat.name+'clicks').text(cat.name+': '+cat.clicks);
     });
 
     $('#'+cat.name).mousedown(function(e) {

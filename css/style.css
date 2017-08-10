@@ -3,9 +3,14 @@ body{
   text-align: center;
 }
 
-.container {
+.numofclicks, .container {
   display: flex;
   justify-content: center;
+}
+
+h2 {
+  margin: auto;
+  text-align: center;
 }
 
 img {
