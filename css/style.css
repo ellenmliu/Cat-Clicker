@@ -3,9 +3,17 @@ body{
   text-align: center;
 }
 
-.numofclicks, .container {
+.listofcats, .numofclicks, .container {
   display: flex;
   justify-content: center;
+}
+
+.catbutton {
+  width: 100px;
+  margin: auto;
+  list-style: none;
+  border-radius: 50px;
+  border: 1px solid #000;
 }
 
 h2 {

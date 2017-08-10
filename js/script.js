@@ -21,8 +21,9 @@ var cats = [
 $(document).ready(function(){
   cats.forEach(function(cat){
 
-    $('.numofclicks').append('<h2 id="'+cat.name+'clicks">'+cat.name+': '+cat.clicks+'</h2>');
-    $('.container').append('<img id="'+cat.name+'" class="cat" src="'+cat.img+'"/>');
+    //$('.numofclicks').append('<h2 id="'+cat.name+'clicks">'+cat.name+': '+cat.clicks+'</h2>');
+    $('.listofcats').append('<li id="show'+cat.name+'" class="catbutton">'+cat.name+'</li>')
+    //$('.container').append('<img id="'+cat.name+'" class="cat" src="'+cat.img+'"/>');
 
     $('#'+cat.name).click(function(e) {
       cat.clicks += 1;
