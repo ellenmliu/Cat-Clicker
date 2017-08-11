@@ -3,7 +3,7 @@ body{
   text-align: center;
 }
 
-.listofcats, .numofclicks, .container {
+.listofcats, .numofclicks, .container, .row{
   display: flex;
   justify-content: center;
 }
@@ -11,6 +11,22 @@ body{
 .catbutton {
   width: 100px;
   margin: auto;
+  list-style: none;
+  border-radius: 50px;
+  border: 1px solid #000;
+}
+
+.adminform {
+}
+
+.row {
+  margin: 20px;
+}
+
+#adminbutton {
+  width: 100px;
+  padding: 5px 25px;
+  margin: 50px;
   list-style: none;
   border-radius: 50px;
   border: 1px solid #000;

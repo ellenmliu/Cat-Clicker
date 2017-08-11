@@ -28,7 +28,8 @@ var model = {
       img: 'https://1.bp.blogspot.com/-xFD4Q4AUO-s/Ti_aZCcTfuI/AAAAAAAAAe8/bSx8P1ywqUc/s1600/wallpaper-gato-estirado.jpg',
       clicks: 0
     }
-  ]
+  ],
+  admin: false
 };
 
 /*------OCTOPUS------*/
@@ -37,6 +38,7 @@ var octopus = {
     this.setCurrentCat(model.cats[0]);
     listview.init();
     displayview.init();
+    adminview.init();
   },
 
   getCats: function() {
@@ -54,6 +56,26 @@ var octopus = {
   increaseClick: function() {
     model.currentCat.clicks++;
     displayview.render();
+  },
+
+  changeAdmin: function() {
+    model.admin = !model.admin;
+  },
+
+  getAdminStatus: function() {
+    return model.admin;
+  },
+
+  changeCatClicks: function(num) {
+    model.currentCat.clicks = num;
+  },
+
+  changeCatName: function(name) {
+    model.currentCat.name = name;
+  },
+
+  changeCatImg: function(url) {
+    model.currentCat.img = url;
   }
 }
 
@@ -107,6 +129,47 @@ var displayview = {
     $('#'+cat.name).mouseup(function(e) {
       $('#'+cat.name).css({"width" : "-=5", "height":"-=5"});
     });
+  }
+};
+
+var adminview = {
+  init: function() {
+    this.render();
+
+    $('#adminbutton').click(function(e) {
+      octopus.changeAdmin();
+      adminview.render();
+    })
+  },
+
+  render: function() {
+    if(octopus.getAdminStatus()) {
+      $('.adminform').show();
+      $('#submit').click(function(e){
+        var newname = $('#name').val();
+        var newurl = $('#url').val();
+        var newnum = $('#num').val();
+
+        if(newname) {
+          octopus.changeCatName(newname);
+        }
+        if(newurl) {
+          octopus.changeCatImg(newurl);
+        }
+        if(newnum) {
+          octopus.changeCatClicks(newnum);
+        }
+        listview.render();
+        displayview.render()
+      });
+
+      $('#cancel').click(function(e){
+        octopus.changeAdmin();
+        adminview.render();
+      });
+    } else {
+      $('.adminform').hide();
+    }
   }
 }
 
