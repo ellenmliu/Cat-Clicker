@@ -161,6 +161,8 @@ var adminview = {
         }
         listview.render();
         displayview.render()
+        octopus.changeAdmin();
+        adminview.render();
       });
 
       $('#cancel').click(function(e){
