@@ -3,6 +3,8 @@ var ViewModel = function() {
   this.name = ko.observable('Star');
   this.imgSrc = ko.observable('https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg');
   this.level = ko.observable('Newborn');
+  this.showForm = ko.observable(false);
+
   this.incrementCounter = function() {
     this.clickCount(this.clickCount() + 1);
 
@@ -22,6 +24,10 @@ var ViewModel = function() {
       this.level('Infant');
     }
   };
+
+  this.toggleForm = function() {
+    this.showForm(!this.showForm());
+  }
 }
 
 ko.applyBindings(new ViewModel());
