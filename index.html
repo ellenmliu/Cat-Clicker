@@ -18,6 +18,11 @@
       <img class="cat" src="" alt="cute cat" data-bind="click: incrementCounter, attr: {src:imgSrc}">
     </div>
 
+    <h3>Nicknames:</h3>
+    <ul data-bind="foreach: nicknames">
+      <li data-bind="text: name"></li>
+    </ul>
+
     <div class="adminarea">
       <span id="adminbutton" data-bind="click: toggleForm">Admin</div>
         <form class="adminform" onsubmit ="return false" data-bind="visible: showForm">

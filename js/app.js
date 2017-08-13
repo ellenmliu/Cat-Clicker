@@ -4,6 +4,11 @@ var ViewModel = function() {
   this.imgSrc = ko.observable('https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg');
   this.level = ko.observable('Newborn');
   this.showForm = ko.observable(false);
+  this.nicknames = ko.observableArray([
+    { name: 'Barley'},
+    { name: 'Starry Night'},
+    { name: 'Constellation'}
+  ]);
 
   this.incrementCounter = function() {
     this.clickCount(this.clickCount() + 1);
