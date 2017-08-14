@@ -2,7 +2,6 @@ var ViewModel = function() {
   this.clickCount = ko.observable(0);
   this.name = ko.observable('Star');
   this.imgSrc = ko.observable('https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg');
-  this.level = ko.observable('Newborn');
   this.showForm = ko.observable(false);
   this.nicknames = ko.observableArray([
     { name: 'Barley'},
@@ -12,23 +11,28 @@ var ViewModel = function() {
 
   this.incrementCounter = function() {
     this.clickCount(this.clickCount() + 1);
+  };
 
+  this.level = ko.computed(function() {
     if (this.clickCount() > 200) {
-      this.level('Adult');
+      return 'Adult';
     }
     else if (this.clickCount() > 100) {
-      this.level('Teen');
+      return 'Teen';
     }
     else if (this.clickCount() > 50) {
-      this.level('Kid');
+      return 'Kid';
     }
     else if (this.clickCount() > 25) {
-      this.level('Toddler');
+      return 'Toddler';
     }
     else if (this.clickCount() > 10) {
-      this.level('Infant');
+      return 'Infant';
     }
-  };
+    else {
+      return 'Newborn';
+    }
+  }, this);
 
   this.toggleForm = function() {
     this.showForm(!this.showForm());
