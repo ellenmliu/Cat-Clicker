@@ -1,13 +1,8 @@
-var Cat = function() {
-  this.clickCount = ko.observable(0);
-  this.name = ko.observable('Star');
-  this.imgSrc = ko.observable('https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg');
-
-  this.nicknames = ko.observableArray([
-    { name: 'Barley'},
-    { name: 'Starry Night'},
-    { name: 'Constellation'}
-  ]);
+var Cat = function(data) {
+  this.clickCount = ko.observable(data.clickCount);
+  this.name = ko.observable(data.name);
+  this.imgSrc = ko.observable(data.imgSrc);
+  this.nicknames = ko.observableArray(data.nicknames);
 
   this.level = ko.computed(function() {
     if (this.clickCount() > 200) {
@@ -33,7 +28,13 @@ var Cat = function() {
 
 var ViewModel = function() {
   this.showForm = ko.observable(false);
-  this.currentCat = ko.observable(new Cat());
+  this.currentCat = ko.observable(new Cat({
+    clickCount: 0,
+    name: 'Star',
+    imgSrc: 'https://i.ytimg.com/vi/W-PBFMECvTE/maxresdefault.jpg',
+    nicknames: [{ name: 'Barley'},
+    { name: 'Starry Night'},
+    { name: 'Constellation'}]}));
 
   this.incrementCounter = function() {
     this.clickCount(this.clickCount() + 1);
